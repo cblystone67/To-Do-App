@@ -1,27 +1,15 @@
 import React from "react";
+import CheckListItem from "./CheckListItem";
 
-function MainContent() {
-  return (
-    <div className="main-content">
-      <h1>Main Content</h1>
-      <div>
-        <label htmlFor="doSomething1">Do Something1</label>
-        <input type="checkbox" name="doSomething1" />
-      </div>
-      <div>
-        <label htmlFor="doSomething2">Do Something1</label>
-        <input type="checkbox" name="doSomething2" />
-      </div>
-      <div>
-        <label htmlFor="doSomething3">Do Something1</label>
-        <input type="checkbox" name="doSomething3" />
-      </div>
-      <div>
-        <label htmlFor="doSomething4">Do Something1</label>
-        <input type="checkbox" name="doSomething4" />
-      </div>
-    </div>
-  );
-}
-
+const MainContent = () => {
+  let toDoList = [
+    { label: "Work", text: "Work" },
+    { label: "Read a Book", text: "Read A Book" },
+    { label: "GoToGym", text: "Go To Gym" },
+  ];
+  let mappingToDoList = toDoList.map(({ label, text }) => (
+    <CheckListItem label={label} text={text} />
+  ));
+  return <>{mappingToDoList}</>;
+};
 export default MainContent;
