@@ -1,10 +1,15 @@
 import React from "react";
 
-const CheckListItem = ({ label, text }) => {
+const CheckListItem = ({ label, text, checked, handleUserClick }) => {
   return (
     <div>
       <label htmlFor={label}>{text}</label>
-      <input type="checkbox" name="getUp" />
+      <input
+        onClick={(e) => handleUserClick(e)}
+        type="checkbox"
+        name={label}
+        checked={checked}
+      />
     </div>
   );
 };
