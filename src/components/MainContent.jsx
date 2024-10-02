@@ -32,8 +32,9 @@ const MainContent = () => {
 
   // Handle checkbox toggle
   const handleUserClick = async (id) => {
+    console.log("Checkbox clicked with id:", id);
     const todoToUpdate = checked.find((item) => item._id === id); // Find the todo to update
-
+    console.log("todotoupday", todoToUpdate);
     const updatedTodo = { ...todoToUpdate, completed: !todoToUpdate.completed };
 
     try {
