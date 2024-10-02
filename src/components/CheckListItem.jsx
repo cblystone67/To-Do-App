@@ -30,7 +30,7 @@ const ChecklistItem = ({
               <Checkbox
                 onChange={() => handleUserClick(_id)}
                 checked={completed}
-                type={"checked"}
+                type={"checkbox"}
                 id={`${_id}`}
                 name={name}
               />
