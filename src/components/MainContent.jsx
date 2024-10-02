@@ -66,7 +66,7 @@ const MainContent = () => {
 
   // Handle editing an item (Switch this logic to make a POST call to update an item on your backend)
   const handleEdit = async (id) => {
-    let newItem = [...checked].find((item) => item.id === id);
+    let newItem = [...checked].find((item) => item._id === id);
     newItem.text === editInputValue;
     try {
       await fetch(`${apiUrl}/edit-item/${id}`, {
@@ -77,7 +77,7 @@ const MainContent = () => {
       const updatedTodo = await response.json();
       setChecked((prev) =>
         prev.map(
-          (item) => (item.id === id ? updatedTodo : item) // Update the state with the modified todo
+          (item) => (item._id === id ? updatedTodo : item) // Update the state with the modified todo
         )
       );
     } catch (error) {
@@ -88,7 +88,7 @@ const MainContent = () => {
 
   // Handle deleting an item (Switch this logic to make a DELETE call to your backend)
   const handleDelete = async (id) => {
-    setChecked((prev) => prev.filter((item) => item.id !== id));
+    setChecked((prev) => prev.filter((item) => item._id !== id));
     try {
       await fetch(`${apiUrl}/delete-item/${id}`, {
         method: "DELETE",
@@ -103,11 +103,16 @@ const MainContent = () => {
   // Map through todo items to render them
   const mappingToDoList = checked.map((item) => (
     <CheckListItem
-      key={item.id}
+      key={item._id}
+      htmlFor={item.text}
+      type={"checked"}
+      _id={_id}
+      name={item.text}
+      text={item.text}
+      complete={item.completed}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
-      handleUserClick={() => handleUserClick(item.id)}
-      {...item}
+      handleUserClick={() => handleUserClick(item._id)}
       isEditClicked={isEditClicked}
       setIsEditClicked={setIsEditClicked}
       editInputValue={editInputValue}
