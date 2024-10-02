@@ -31,13 +31,29 @@ const MainContent = () => {
   }, []); // Empty dependency array means this will run once when the component mounts
 
   // Handle checkbox toggle
-  const handleUserClick = (id) => {
-    setChecked((prev) =>
-      prev.map((item) =>
-        item._id === id ? { ...item, completed: !item.completed } : item
-      )
-    );
-    console.log("userclicked");
+  const handleUserClick = async (id) => {
+    const todoToUpdate = checked.find((item) => item._id === id); // Find the todo to update
+
+    const updatedTodo = { ...todoToUpdate, completed: !todoToUpdate.completed };
+
+    try {
+      const response = await fetch(`${apiUrl}/edit-item/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          task: updatedTodo.text,
+          completed: updatedTodo.completed,
+        }),
+      });
+      const updatedData = await response.json();
+      console.log("Updated Todo:", updatedData);
+
+      setChecked((prev) =>
+        prev.map((item) => (item._id === id ? updatedData : item))
+      );
+    } catch (error) {
+      console.error("Failed to update todo:", error);
+    }
   };
 
   // Handle adding a new item (Switch this logic to make a POST call to your backend)
@@ -74,7 +90,10 @@ const MainContent = () => {
       const response = await fetch(`${apiUrl}/edit-item/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: editInputValue }),
+        body: JSON.stringify({
+          text: editInputValue,
+          completed: newItem.completed,
+        }),
       }); // Adjust backend URL accordingly
       const updatedTodo = await response.json();
       console.log("Updated Todo", updatedTodo);
