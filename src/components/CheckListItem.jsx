@@ -28,7 +28,7 @@ const ChecklistItem = ({
           <FormControlLabel
             control={
               <Checkbox
-                onChange={(e) => handleUserClick(e)}
+                onChange={() => handleUserClick(_id)}
                 checked={completed}
                 type={type}
                 id={`${_id}`}
