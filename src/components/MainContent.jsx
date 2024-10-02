@@ -73,7 +73,7 @@ const MainContent = () => {
       const response = await fetch(`${apiUrl}/edit-item/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newItem),
+        body: JSON.stringify({ text: editInputValue }),
       }); // Adjust backend URL accordingly
       const updatedTodo = await response.json();
       console.log("Updated Todo", updatedTodo);
