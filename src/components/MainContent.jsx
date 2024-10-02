@@ -70,7 +70,7 @@ const MainContent = () => {
     newItem.text === editInputValue;
     console.log("NewItem", newItem);
     try {
-      await fetch(`${apiUrl}/edit-item/${id}`, {
+      const response = await fetch(`${apiUrl}/edit-item/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newItem),
