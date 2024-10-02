@@ -51,7 +51,7 @@ const MainContent = () => {
         `${apiUrl}/add-item`, //todo-app-backend-0iqe.onrender.com/add-item",
         {
           method: "POST",
-          headers: { "Content-Type": "application.json" },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newItem),
         }
       ); // Adjust backend URL accordingly
