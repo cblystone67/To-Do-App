@@ -33,28 +33,28 @@ const MainContent = () => {
   // Handle checkbox toggle
   const handleUserClick = async (id) => {
     console.log("Checkbox clicked with id:", id);
-    const todoToUpdate = checked.find((item) => item._id === id); // Find the todo to update
-    console.log("todotoupday", todoToUpdate);
-    const updatedTodo = { ...todoToUpdate, completed: !todoToUpdate.completed };
+    // const todoToUpdate = checked.find((item) => item._id === id); // Find the todo to update
+    // console.log("todoToUpdate", todoToUpdate);
+    // const updatedTodo = { ...todoToUpdate, completed: !todoToUpdate.completed };
 
-    try {
-      const response = await fetch(`${apiUrl}/edit-item/${id}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          task: updatedTodo.text,
-          completed: updatedTodo.completed,
-        }),
-      });
-      const updatedData = await response.json();
-      console.log("Updated Todo:", updatedData);
+    // try {
+    //   const response = await fetch(`${apiUrl}/edit-item/${id}`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       task: updatedTodo.text,
+    //       completed: updatedTodo.completed,
+    //     }),
+    //   });
+    //   const updatedData = await response.json();
+    //   console.log("Updated Todo:", updatedData);
 
-      setChecked((prev) =>
-        prev.map((item) => (item._id === id ? updatedData : item))
-      );
-    } catch (error) {
-      console.error("Failed to update todo:", error);
-    }
+    //   setChecked((prev) =>
+    //     prev.map((item) => (item._id === id ? updatedData : item))
+    //   );
+    // } catch (error) {
+    //   console.error("Failed to update todo:", error);
+    // }
   };
 
   // Handle adding a new item (Switch this logic to make a POST call to your backend)
