@@ -68,13 +68,15 @@ const MainContent = () => {
   const handleEdit = async (id) => {
     let newItem = [...checked].find((item) => item._id === id);
     newItem.text === editInputValue;
+    console.log("NewItem", newItem);
     try {
       await fetch(`${apiUrl}/edit-item/${id}`, {
         method: "POST",
-        headers: { "Content-Type": "application.json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newItem),
       }); // Adjust backend URL accordingly
       const updatedTodo = await response.json();
+      console.log("Updated Todo", updatedTodo);
       setChecked((prev) =>
         prev.map(
           (item) => (item._id === id ? updatedTodo : item) // Update the state with the modified todo
