@@ -60,7 +60,7 @@ const ChecklistItem = ({
           </Button>
         </>
       )}
-      {isEditClicked && editItemId === id && (
+      {isEditClicked && editItemId === _id && (
         <>
           {" "}
           <TextField
