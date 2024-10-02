@@ -115,7 +115,7 @@ const MainContent = () => {
       completed={item.completed}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
-      handleUserClick={() => handleUserClick(item._id)}
+      handleUserClick={handleUserClick}
       isEditClicked={isEditClicked}
       setIsEditClicked={setIsEditClicked}
       editInputValue={editInputValue}
