@@ -11,14 +11,16 @@ const MainContent = () => {
   const [editInputValue, setEditInputValue] = useState(""); // State for edit input field
   const [isEditClicked, setIsEditClicked] = useState(false); // State to track if an item is being edited
   const [editItemId, setEditItemId] = useState(null); // State to track which item is being edited
+  // Use the correct backend URL for the Express server
+  const apiUrl =
+    import.meta.env.VITE_API_URL ||
+    "https://todo-app-backend-0iqe.onrender.com";
 
   // Fetch all todos from the backend when the component mounts
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await fetch(
-          "https://todo-app-backend-0iqe.onrender.com/todos"
-        ); // Adjust backend URL accordingly
+        const response = await fetch(`${apiUrl}/todos`); // Adjust backend URL accordingly
         const data = await response.json();
         setChecked(data.todos); // Update state with fetched todos
       } catch (error) {
@@ -46,7 +48,7 @@ const MainContent = () => {
 
     try {
       const response = await fetch(
-        "https://todo-app-backend-0iqe.onrender.com/add-item",
+        `${apiUrl}/add-item`, //todo-app-backend-0iqe.onrender.com/add-item",
         {
           method: "POST",
           headers: { "Content-Type": "application.json" },
@@ -67,14 +69,11 @@ const MainContent = () => {
     let newItem = [...checked].find((item) => item.id === id);
     newItem.text === editInputValue;
     try {
-      await fetch(
-        `https://todo-app-backend-0iqe.onrender.com/edit-item/${id}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application.json" },
-          body: JSON.stringify(newItem),
-        }
-      ); // Adjust backend URL accordingly
+      await fetch(`${apiUrl}/edit-item/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application.json" },
+        body: JSON.stringify(newItem),
+      }); // Adjust backend URL accordingly
       const updatedTodo = await response.json();
       setChecked((prev) =>
         prev.map(
@@ -91,12 +90,9 @@ const MainContent = () => {
   const handleDelete = async (id) => {
     setChecked((prev) => prev.filter((item) => item.id !== id));
     try {
-      await fetch(
-        `https://todo-app-backend-0iqe.onrender.com/delete-item/${id}`,
-        {
-          method: "DELETE",
-        }
-      ); // Adjust backend URL accordingly
+      await fetch(`${apiUrl}/delete-item/${id}`, {
+        method: "DELETE",
+      }); // Adjust backend URL accordingly
       //const data = await response.json();
       //setChecked(data.todos); // Update state with fetched todos
     } catch (error) {
