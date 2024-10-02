@@ -41,9 +41,7 @@ const MainContent = () => {
   const handleAddItem = async () => {
     if (!inputValue.trim()) return; // Prevent empty inputs
     const newItem = {
-      id: checked.length + 1,
       text: inputValue,
-      completed: false,
     };
 
     try {
@@ -56,6 +54,7 @@ const MainContent = () => {
         }
       ); // Adjust backend URL accordingly
       const createdItem = await response.json();
+      console.log("Created Item", createdItem);
       setChecked([...checked, createdItem]); // Update state with fetched todos
     } catch (error) {
       console.error("Failed to fetch todos:", error);
