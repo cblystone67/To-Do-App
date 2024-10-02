@@ -34,7 +34,7 @@ const MainContent = () => {
   const handleUserClick = (id) => {
     setChecked((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, completed: !item.completed } : item
+        item._id === id ? { ...item, completed: !item.completed } : item
       )
     );
   };
