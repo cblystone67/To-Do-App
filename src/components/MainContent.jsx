@@ -106,7 +106,7 @@ const MainContent = () => {
       key={item._id}
       htmlFor={item.text}
       type={"checked"}
-      _id={_id}
+      _id={item._id}
       name={item.text}
       text={item.text}
       complete={item.completed}
