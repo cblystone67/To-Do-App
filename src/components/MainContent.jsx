@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useState, useEffect } from "react";
-import ChecklistItem from "./ChecklistItem";
+import CheckListItem from "./CheckListItem";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
@@ -102,7 +102,7 @@ const MainContent = () => {
 
   // Map through todo items to render them
   const mappingToDoList = checked.map((item) => (
-    <ChecklistItem
+    <CheckListItem
       key={item.id}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
