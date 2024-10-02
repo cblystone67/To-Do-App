@@ -37,6 +37,7 @@ const MainContent = () => {
         item._id === id ? { ...item, completed: !item.completed } : item
       )
     );
+    console.log("userclicked");
   };
 
   // Handle adding a new item (Switch this logic to make a POST call to your backend)
