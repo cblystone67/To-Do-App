@@ -69,6 +69,11 @@ const ChecklistItem = ({
             name="addToDo"
             onChange={(e) => setEditInputValue(e.target.value)}
             variant="filled"
+            sx={{
+              "& .MuiFilledInput-input": {
+                color: "white", // or 'red'
+              },
+            }}
           />
           <Button
             variant="outlined"
