@@ -4,6 +4,18 @@ import { TextField } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+const useStyles = makeStyles({
+  whiteInput: {
+    "& .MuiFilledInput-input": {
+      color: "white",
+    },
+  },
+  redInput: {
+    "& .MuiFilledInput-input": {
+      color: "red",
+    },
+  },
+});
 const ChecklistItem = ({
   editInputValue,
   handleDelete,
@@ -69,6 +81,7 @@ const ChecklistItem = ({
             name="addToDo"
             onChange={(e) => setEditInputValue(e.target.value)}
             variant="filled"
+            className={classes.whiteInput} // or classes.redInput
           />
           <Button
             variant="outlined"
