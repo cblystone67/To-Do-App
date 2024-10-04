@@ -84,7 +84,7 @@ const MainContent = () => {
 
   // Handle editing an item (Switch this logic to make a POST call to update an item on your backend)
   const handleEdit = async (id) => {
-    let newItem = [...checked].find((item) => item._id === id);
+    let newItem = { ...checked.find((item) => item._id === id) };
     newItem.text === editInputValue;
     console.log("NewItem", newItem);
     try {
