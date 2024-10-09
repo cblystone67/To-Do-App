@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import CheckListItem from "./CheckListItem";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { backdropClasses } from "@mui/material";
 
 const MainContent = () => {
   const [checked, setChecked] = useState([]); // State to manage todo items
@@ -155,6 +156,13 @@ const MainContent = () => {
         onChange={(e) => setInputValue(e.target.value)}
         variant="filled"
         placeholder="Add new task"
+        sx={{
+          input: { color: "white" },
+          backgroundColor: "#242424",
+          "& .MuiFilledInput-root": {
+            backgroundColor: "#242424",
+          },
+        }}
       />
       <Button onClick={handleAddItem} variant="contained" sx={{ mt: 2 }}>
         + Add
